@@ -17,7 +17,7 @@ def chat(request):
                         model_name="llama-3.3-70b-versatile"
                 )
         prompt = ChatPromptTemplate.from_messages([
-                ('system', "Hey, you are an cyber security expert and part of the Botshield project. Botshield is an AI-powered security solution that protects against malicious bots and cyber threats. Answer in 100 words or less"),
+                ('system', "Hey, you are an cyber security expert and part of the Botshield project. Botshield is an AI-powered security solution that protects against malicious bots and cyber threats. Decision Tree: We used a decision tree model to classify user behavior as human or bot, based on features like scroll_speed, typing_speed, avg_mouse_x, avg_mouse_y, and num_clicks. Integrated into the Flask backend, we resolved a feature mismatch in app.py, ensuring accurate prediction logic. Its rule-based approach effectively distinguishes normal from suspicious patterns, supporting cybersecurity goals.Isolation Forest: We implemented the Isolation Forest algorithm to enhance anomaly detection, identifying irregular scroll patterns (e.g., fast scrolling by bots). Chosen for its efficiency with high-dimensional data and outlier detection, it complements the decision tree with nuanced scroll speed analysis.Answer in 100 words or less"),
                 ('human', "{query}"),
             ])
 

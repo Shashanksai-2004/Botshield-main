@@ -211,6 +211,171 @@
         body.dark-theme .nav ul li:not(:last-child)::after {
             background-color: #444;
         }
+
+        .heading {
+            font-size: 3vmin;
+            font-weight: bold;
+            margin: 4vmin 0 4vmin 0;
+        }
+
+        .custom-card{
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: inset 0 4px 10px rgba(141, 136, 136, 0.492);
+            backdrop-filter: blur(5.4px);
+            -webkit-backdrop-filter: blur(5.4px);
+            border: 1px solid rgba(0, 0, 0, 0.76);
+            width: 100%;
+            height: 100%;
+        }
+
+
+        body.dark-theme .custom-card{
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: inset 0 4px 10px rgba(141, 136, 136, 0.492);
+            backdrop-filter: blur(5.4px);
+            -webkit-backdrop-filter: blur(5.4px);
+            border: 1px solid rgba(0, 0, 0, 0.76);
+            width: 100%;
+            height: 100%;
+        }
+
+        .card-head{
+            font-size: 2vmin;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #323232;
+        }
+
+        body.dark-theme .card-head{
+            font-size: 2vmin;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #c2c2c2;
+        }
+
+        .activity-container{
+            width: 100%;
+            height: auto;
+            margin-top: 8vmin;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3vmin
+            
+        }
+
+        body.dark-theme .activity-container{
+            width: 100%;
+            height: auto;
+            margin-top: 8vmin;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3vmin
+        }
+
+        .bot-activity{
+            width: 50%;
+            height: 600px;
+            background-color: #ddd;
+            border-radius: 8px;
+            box-shadow: 3px 3px 10px #c1c1c1;
+            border: 0.01px solid #3332325d;
+            
+            padding: 4vmin;
+          
+        }
+
+        body.dark-theme .bot-activity{
+            width:  50%;
+            height: 600px;
+            background-color: #111;
+            border-radius: 8px;
+            box-shadow: 3px 3px 10px #212121;
+            border: 0.01px solid #f3f3f35d;
+            
+            padding: 4vmin;
+          
+        }
+
+        .bot-activity h3{
+            font-size: 3.5vmin;
+            font-weight: bold;
+        }
+
+        .bot-activity p{
+            font-size: 2vmin;
+            color: #2a2626e9;
+        }
+        
+        body.dark-theme  .bot-activity p{
+            font-size: 2vmin;
+            color: #cabdbde9;
+        }
+        .recent-activity{
+            width:   50%;
+            height: 600px;
+            background-color: #ddd;
+            border-radius: 8px;
+            box-shadow: 3px 3px 10px #c1c1c1;
+            border: 0.01px solid #3332325d;
+            
+            padding: 4vmin;
+            overflow-y: scroll;
+        }
+
+       body.dark-theme .recent-activity{
+            width: 50%;
+            height: 600px;
+            background-color: #111;
+            border-radius: 8px;
+            box-shadow: 3px 3px 10px #212121;
+            border: 0.01px solid #f3f3f35d;
+            padding: 4vmin;
+            overflow-y: scroll;
+
+        }
+
+
+        .recent-activity h3{
+            font-size: 3.5vmin;
+            font-weight: bold;
+        }
+
+        .recent-activity p{
+            font-size: 2vmin;
+            color: #2a2626e9;
+        }
+        
+        body.dark-theme  .recent-activity p{
+            font-size: 2vmin;
+            color: #cabdbde9;
+        }
+
+
+        .recent-activity-item p{
+            color: #212121;
+        }
+
+        body.dark-theme .recent-activity-item p{
+            color: #f1f1f1;
+            
+        }
+
+        .recent-activity-item .details{
+            display: none !important; 
+        }
+
+        .recent-activity-item:hover .details{
+            display: flex !important;
+            margin-top: 2vmin !important;
+        }
+
+
     </style>
 </head>
 
@@ -226,82 +391,111 @@
             <li><a href="/about">About</a></li>
             <li><a href="/logout">Logout</a></li>
             <li>
-                <button class="theme-switch" onclick="toggleTheme()">
-                    <i data-lucide="sun" class="sun-icon"></i>
-                    <i data-lucide="moon" class="moon-icon"></i>
-                </button>
+                <label class="switch">
+                    <input id="input" type="checkbox" onchange="toggleTheme()" />
+                    <div class="slider round">
+                        <div class="sun-moon">
+                            <svg id="moon-dot-1" class="moon-dot" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50"></circle></svg>
+                            <svg id="moon-dot-2" class="moon-dot" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50"></circle></svg>
+                            <svg id="moon-dot-3" class="moon-dot" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50"></circle></svg>
+                            <svg id="light-ray-1" class="light-ray" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50"></circle></svg>
+                            <svg id="light-ray-2" class="light-ray" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50"></circle></svg>
+                            <svg id="light-ray-3" class="light-ray" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50"></circle></svg>
+                            <svg id="cloud-1" class="cloud-dark" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50"></circle></svg>
+                            <svg id="cloud-2" class="cloud-dark" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50"></circle></svg>
+                            <svg id="cloud-3" class="cloud-dark" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50"></circle></svg>
+                            <svg id="cloud-4" class="cloud-light" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50"></circle></svg>
+                            <svg id="cloud-5" class="cloud-light" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50"></circle></svg>
+                            <svg id="cloud-6" class="cloud-light" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50"></circle></svg>
+                        </div>
+                        <div class="stars">
+                            <svg id="star-1" class="star" viewBox="0 0 20 20"><path d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z"></path></svg>
+                            <svg id="star-2" class="star" viewBox="0 0 20 20"><path d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z"></path></svg>
+                            <svg id="star-3" class="star" viewBox="0 0 20 20"><path d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z"></path></svg>
+                            <svg id="star-4" class="star" viewBox="0 0 20 20"><path d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z"></path></svg>
+                        </div>
+                    </div>
+                </label>
             </li>
         </ul>
     </nav>
 
     <div class="container">
-        <h2 class="text-center mb-4">Real-Time User Behavior Dashboard</h2>
-
-        <div class="row g-4">
-            <div class="col-md-6 col-lg-3">
-                <div class="card p-4">
-                    <div class="metric-label">Total Sessions</div>
-                    <div class="metric-value" id="totalSessions">0</div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="card p-4">
-                    <div class="metric-label">Flagged Sessions</div>
-                    <div class="metric-value" id="flaggedSessions">0</div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="card p-4">
-                    <div class="metric-label">Average Typing Speed</div>
-                    <div class="metric-value" id="typingSpeed">0 ms/keystroke</div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="card p-4">
-                    <div class="metric-label">Average Scroll Speed</div>
-                    <div class="metric-value" id="scrollSpeed">0 px/s</div>
-                </div>
-            </div>
+        <div class="d-flex justify-content-start align-items-baseline gap-5"> 
+        <h2  class="heading  ml-5">DASHBOARD</h2>
+        <span style="margin-bottom: 2rem;" id="botStatus" class="badge fs-6 text-bg-success">Human</span>
         </div>
+      
 
-        <div class="row mt-4">
-            <div class="col-12">
-                <div class="card p-4 detection-card" id="detectionCard">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <h3 class="mb-3">Current Detection Status</h3>
-                            <div class="metric-value" id="botStatus">Monitoring...</div>
-                        </div>
-                        <div id="statusIcon" class="fs-1">👤</div>
+        <div class="row ">
+            <div class="col-md-6 col-lg-3">
+                <div class="custom-card p-4">
+                    <div class="d-flex justify-content-between align-items-baseline">
+                         <div class="card-head">Total Sessions</div>
+                         <span class="fs-6"><i  data-lucide="users"></i></span>
                     </div>
+
+                    <div style="color: #13d313" class="fs-3 fw-bold" id="totalSessions">0</div>
+
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="custom-card p-4">
+                    <div class="d-flex justify-content-between align-items-baseline">
+                            <div class="card-head">Flagged Sessions</div>
+                            <i data-lucide="triangle-alert"></i>
+
+                    </div>
+                    <div style="color: #aa0000;" class="fs-3 fw-bold" id="flaggedSessions">0</div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="custom-card p-4">
+                    <div class="d-flex justify-content-between align-items-baseline">
+                       <div class="card-head">Average Typing Speed</div>
+                        <i data-lucide="clock"></i>
+                    </div>
+                    <div class="fs-4 fw-bold" id="typingSpeed">0 ms/keystroke</div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="custom-card p-4">
+                    <div class="d-flex justify-content-between align-items-baseline">
+                    <div class="card-head">Average Scroll Speed</div>
+                    <i data-lucide="gauge"></i>
+                    </div>
+                    <div class="fs-3 fw-bold" id="scrollSpeed">0 px/s</div>
                 </div>
             </div>
         </div>
 
-        <div class="table-responsive mt-4">
-            <h4 class="mb-3">Recent User Sessions</h4>
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Username</th>
-                        <th>Typing Speed (ms/keystroke)</th>
-                        <th>Scroll Speed (px/s)</th>
-                        <th>Status</th>
-                        <th>Timestamp</th>
-                    </tr>
-                </thead>
-                <tbody id="activityTable">
-                </tbody>
-            </table>
+
+      
+        <div class="activity-container">
+            <div class="bot-activity">
+                <h3>Bot Detection Activity</h3>
+                <div class="mb-4">
+                    <h5 class="mb-3">Bot vs Human Sessions Over Time</h5>
+                    <canvas id="botHumanLineChart" width="450" height="180" style="max-width:100%;"></canvas>
+                </div>
+            </div>
+            <div class="recent-activity" >
+                <div>
+                    <h3>Recent Activity</h3>
+                    <p>Latest security events and detections</p>
+                </div>
+                <div id="recentActivity"  style="margin-top: 5vmin;"></div>
+            </div>
         </div>
+
         <div id="lastUpdate"></div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.0/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <script src="{{ url_for('static', filename='dashboard.js') }}"></script>
     <script>
-        // Theme switcher functionality
         function toggleTheme() {
             const body = document.body;
 
@@ -311,16 +505,15 @@
                 body.classList.add('dark-theme');
             }
 
-            // Save theme preference
             localStorage.setItem('theme', body.classList.contains('dark-theme') ? 'dark' : 'light');
         }
 
-        // Load saved theme preference
         document.addEventListener('DOMContentLoaded', function () {
             lucide.createIcons();
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme === 'dark') {
                 document.body.classList.add('dark-theme');
+                document.getElementById('input').checked = true;
             }
         });
     </script>

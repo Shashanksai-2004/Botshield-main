@@ -4,7 +4,7 @@ app = Flask(__name__)
 app.secret_key = 'behavior'
 
 
-@app.route("/, methods=["GET", "POST"])
+@app.route("/", methods=["GET", "POST"])
 def home():
     # Handle POST request to check for logout
     if request.method == "POST":

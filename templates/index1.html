@@ -473,7 +473,6 @@
             color: #fff;
         }
 
-        /* Theme Switcher and Profile Styles */
         .theme-switch {
             position: relative;
             width: 80px;
@@ -867,11 +866,9 @@
             sidebar.classList.toggle("active");
             mainContent.classList.toggle("sidebar-active");
             
-            // Store sidebar state in localStorage
             localStorage.setItem('sidebarClosed', sidebar.classList.contains('active'));
         });
 
-        // Initialize sidebar state from localStorage
         document.addEventListener('DOMContentLoaded', function() {
             const sidebar = document.getElementById("sidebar");
             const mainContent = document.querySelector(".main-content");
@@ -885,19 +882,16 @@
 
         lucide.createIcons();
 
-        // Theme switcher functionality
         function toggleTheme() {
             document.body.classList.toggle('dark-theme');
             const theme = document.body.classList.contains('dark-theme') ? 'dark' : 'light';
             localStorage.setItem('theme', theme);
         }
 
-        // Profile dropdown
         function toggleProfile() {
             document.getElementById('profileDropdown').classList.toggle('show');
         }
 
-        // Close profile dropdown when clicking outside
         window.addEventListener('click', function(e) {
             if (!e.target.matches('.profile-toggle') && !e.target.matches('.profile-toggle *')) {
                 const dropdown = document.getElementById('profileDropdown');
@@ -931,9 +925,9 @@
                     },
                     body: JSON.stringify({
                         typing_speed: typing_speed,
-                        scroll_speed: scroll_speed,  // Send scroll speed
-                        suspicious_count: 0,  // Will be updated in tracking.js
-                        paste_count: 0,  // Will be updated in tracking.js
+                        scroll_speed: scroll_speed,  
+                        suspicious_count: 0,  
+                        paste_count: 0,  
                         is_logout: false
                     })
                 });
@@ -1049,7 +1043,6 @@
             window.location.href = '/dashboard';
         }, 30000);
 
-        // Chatbot toggle functionality
         function toggleChatbot() {
             const chatbotWindow = document.getElementById('chatbot-window');
             chatbotWindow.style.display = chatbotWindow.style.display === 'flex' ? 'none' : 'flex';
@@ -1066,16 +1059,13 @@
                 const userMessage = inputField.value.trim();
                 if (userMessage === "") return;
 
-                // Display user message
                 const userMessageDiv = document.createElement("div");
                 userMessageDiv.classList.add("user-message");
                 userMessageDiv.textContent = userMessage;
                 chatbotBody.appendChild(userMessageDiv);
 
-                // Clear input field
                 inputField.value = "";
 
-                // Send message to backend
                 fetch("/chat", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
