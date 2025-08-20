@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Botshield - Login</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    :root {
+      --bg-color: #1a1a1a;
+      --container-bg: #252525;
+      --text-color: #d1d5db;
+      --subtext-color: #9ca3af;
+      --input-bg: #333333;
+      --input-border: #4b5563;
+      --button-bg: #ffffff;
+      --button-text: #1a1a1a;
+      --button-hover: #f3f4f6;
+      --link-color: #60a5fa;
+      --shadow-color: rgba(0, 0, 0, 0.1);
+      --focus-ring: rgba(96, 165, 250, 0.2);
+      --form-title: #f9fafb;
+      --logo-color: #4b5563;
+    }
+
+    [data-theme="light"] {
+      --bg-color: #f9fafb;
+      --container-bg: #ffffff;
+      --text-color: #1f2937;
+      --subtext-color: #6b7280;
+      --input-bg: #f3f4f6;
+      --input-border: #d1d5db;
+      --button-bg: #1a1a1a;
+      --button-text: #ffffff;
+      --button-hover: #333333;
+      --link-color: #2563eb;
+      --shadow-color: rgba(0, 0, 0, 0.05);
+      --focus-ring: rgba(37, 99, 235, 0.2);
+      --form-title: #1f2937;
+      --logo-color: #6b7280;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .container {
+      background-color: var(--container-bg);
+      padding: 40px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 4px 6px var(--shadow-color);
+      position: relative;
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .logo svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--logo-color);
+      margin-right: 10px;
+    }
+
+    .logo span {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-color);
+    }
+
+    .subtext {
+      text-align: center;
+      font-size: 14px;
+      color: var(--subtext-color);
+      margin-bottom: 20px;
+    }
+
+    .form-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--form-title);
+      margin-bottom: 10px;
+    }
+
+    .form-subtitle {
+      font-size: 12px;
+      color: var(--subtext-color);
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      color: var(--text-color);
+      margin-bottom: 5px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      background-color: var(--input-bg);
+      border: 1px solid var(--input-border);
+      border-radius: 5px;
+      color: var(--text-color);
+      font-size: 14px;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--link-color);
+      box-shadow: 0 0 0 2px var(--focus-ring);
+    }
+
+    .password-toggle {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: var(--subtext-color);
+    }
+
+    .form-group.password {
+      position: relative;
+    }
+
+    .forget-password {
+      text-align: right;
+      margin-bottom: 15px;
+    }
+
+    .forget-password a {
+      font-size: 12px;
+      color: var(--link-color);
+      text-decoration: none;
+    }
+
+    .forget-password a:hover {
+      text-decoration: underline;
+    }
+
+    .sign-in-button {
+      width: 100%;
+      padding: 10px;
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .sign-in-button:hover {
+      background-color: var(--button-hover);
+    }
+
+    .sign-up-link {
+      text-align: center;
+      font-size: 14px;
+      color: var(--subtext-color);
+      margin-top: 15px;
+    }
+
+    .sign-up-link a {
+      color: var(--link-color);
+      text-decoration: none;
+    }
+
+    .sign-up-link a:hover {
+      text-decoration: underline;
+    }
+
+    .back-home {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .back-home a {
+      color: var(--subtext-color);
+      font-size: 12px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .back-home a:hover {
+      color: var(--text-color);
+    }
+
+    .back-home svg {
+      width: 12px;
+      height: 12px;
+      margin-right: 5px;
+      fill: var(--subtext-color);
+    }
+  </style>
+  <!-- Add external or static stylesheet links if needed -->
+  <!-- Example: <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> -->
+</head>
+<body>
+  <!-- Notification container -->
+  <div class="notification-container" id="notificationContainer"></div>
+  <div id="lockoutModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7);z-index:1000;align-items:center;justify-content:center;">
+    <div style="background:#222;padding:32px 24px;border-radius:10px;box-shadow:0 2px 18px #000;max-width:340px;width:90%;text-align:center;color:#fff;">
+      <div style="font-size:20px;font-weight:600;margin-bottom:12px;">You were blocked for a minute due to suspicious activity.</div>
+      <div style="font-size:16px;margin-bottom:10px;">Please wait <span id="lockoutTimer">60</span> seconds.</div>
+    </div>
+  </div>
+  <script>
+    // Lockout popup logic
+    var isLocked = {{ (is_locked and remaining_time > 0)|tojson }};
+    var remainingTime = {{ (remaining_time if (is_locked and remaining_time > 0) else 0)|tojson }};
+    function showLockoutModal() {
+      var modal = document.getElementById('lockoutModal');
+      var timerSpan = document.getElementById('lockoutTimer');
+      var timeLeft = remainingTime;
+      if (!modal) return;
+      modal.style.display = 'flex';
+      timerSpan.textContent = timeLeft;
+      var interval = setInterval(function() {
+        timeLeft--;
+        timerSpan.textContent = timeLeft;
+        if (timeLeft <= 0) {
+          clearInterval(interval);
+          modal.style.display = 'none';
+          window.location.reload();
+        }
+      }, 1000);
+    }
+    if (isLocked && remainingTime > 0) {
+      setTimeout(showLockoutModal, 3000);
+      // Optionally disable form
+      document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+          var form = document.querySelector('form');
+          if (form) {
+            Array.prototype.forEach.call(form.elements, function(el) { el.disabled = true; });
+          }
+        }, 3000);
+      });
+    }
+  </script>
+  <!-- Notification container -->
+  <div class="notification-container" id="notificationContainer"></div>
+  <div class="container">
+    <div class="theme-toggle" onclick="toggleTheme()">🌙</div>
+    <div class="logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+      </svg>
+      <span>Botshield</span>
+    </div>
+    <div class="subtext">Advanced bot detection and security platform</div>
+    <div class="form-title">Login</div>
+    <div class="form-subtitle">Enter your credentials to access your account</div>
+    <form action="{{ url_for('login_validation') }}" method="post">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" id="email" name="username" placeholder="Email" required>
+      </div>
+      <div class="form-group password">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Password" required>
+        <span class="password-toggle">👁️</span>
+      </div>
+      
+      <button type="submit" class="sign-in-button">Sign in</button>
+    </form>
+    <div class="sign-up-link">Don't have an account? <a href="{{ url_for('register') }}">Sign up</a></div>
+    <div class="back-home">
+      <a href="{{ url_for('indexpage') }}">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"></path>
+        </svg>
+        Back to home
+      </a>
+    </div>
+  </div>
+  <script>
+    // Lockout popup logic
+    var isLocked = {{ (is_locked and remaining_time > 0)|tojson }};
+    var remainingTime = {{ (remaining_time if (is_locked and remaining_time > 0) else 0)|tojson }};
+    function showLockoutModal() {
+      const modal = document.getElementById('lockoutModal');
+      const timerSpan = document.getElementById('lockoutTimer');
+      let timeLeft = remainingTime;
+      if (!modal) return;
+      modal.style.display = 'flex';
+      timerSpan.textContent = timeLeft;
+      const interval = setInterval(() => {
+        timeLeft--;
+        timerSpan.textContent = timeLeft;
+        if (timeLeft <= 0) {
+          clearInterval(interval);
+          modal.style.display = 'none';
+          window.location.reload();
+        }
+      }, 1000);
+    }
+    if (isLocked && remainingTime > 0) {
+      setTimeout(showLockoutModal, 3000);
+      // Optionally disable form
+      document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(() => {
+          const form = document.querySelector('form');
+          if (form) {
+            Array.from(form.elements).forEach(el => el.disabled = true);
+          }
+        }, 3000);
+      });
+    }
+
+    function toggleTheme() {
+      const body = document.body;
+      const currentTheme = body.getAttribute('data-theme');
+      const toggleIcon = document.querySelector('.theme-toggle');
+      
+      if (currentTheme === 'light') {
+        body.removeAttribute('data-theme');
+        toggleIcon.textContent = '🌙';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        body.setAttribute('data-theme', 'light');
+        toggleIcon.textContent = '☀️';
+        localStorage.setItem('theme', 'light');
+      }
+    }
+
+    // Load saved theme from localStorage
+    window.onload = () => {
+      const savedTheme = localStorage.getItem('theme');
+      const toggleIcon = document.querySelector('.theme-toggle');
+      if (savedTheme === 'light') {
+        document.body.setAttribute('data-theme', 'light');
+        toggleIcon.textContent = '☀️';
+      } else {
+        toggleIcon.textContent = '🌙';
+      }
+    };
+  </script>
+    <script>
+    // Notification styles from index.html
+    const notificationStyles = document.createElement('style');
+    notificationStyles.innerHTML = `
+      .notification-container {
+        margin-bottom: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+      }
+      .notification {
+        padding: 0.8rem;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        color: white;
+        opacity: 0;
+        animation: fadeInOut 5s ease forwards;
+        background-color: rgba(255, 0, 0, 0.8);
+      }
+      .notification.error, .notification.danger {
+        background-color: rgba(255, 82, 82, 0.8);
+      }
+      .notification.success {
+        background-color: rgba(76, 175, 80, 0.8);
+      }
+      .notification.info {
+        background-color: rgba(33, 150, 243, 0.8);
+      }
+      @keyframes fadeInOut {
+        0% { opacity: 0; transform: translateY(-10px); }
+        10% { opacity: 1; transform: translateY(0); }
+        90% { opacity: 1; transform: translateY(0); }
+        100% { opacity: 0; transform: translateY(-10px); }
+      }
+    `;
+    document.head.appendChild(notificationStyles);
+    // Notification JS
+    function showNotification(message, category) {
+      const notification = document.createElement('div');
+      notification.className = `notification ${category}`;
+      notification.textContent = message;
+      document.getElementById('notificationContainer').appendChild(notification);
+      setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+      }, 100);
+      setTimeout(() => {
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+          notification.remove();
+        }, 300);
+      }, 5000);
+    }
+    // Handle flash messages from Flask
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      const flashMessages = {{ messages|tojson|safe }};
+    {% endwith %}
+    if (typeof flashMessages !== 'undefined' && flashMessages.length) {
+      flashMessages.forEach(flash => {
+        showNotification(flash[1], flash[0]);
+      });
+    }
+    </script>
+</body>
+</html>
